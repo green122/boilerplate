@@ -25,7 +25,6 @@ import createStore from 'redux/create';
 import apiClient from 'helpers/apiClient';
 import Html from 'helpers/Html';
 import routes from 'routes';
-import { createApp } from 'app';
 import { getChunks, waitChunks } from 'utils/chunks';
 import asyncMatchRoutes from 'utils/asyncMatchRoutes';
 import { ReduxAsyncConnect, Provider } from 'components';
@@ -108,7 +107,6 @@ app.use(async (req, res) => {
     webpackIsomorphicTools.refresh();
   }
   const providers = {
-    app: createApp(req),
     client: apiClient(req)
   };
   const history = createMemoryHistory({ initialEntries: [req.originalUrl] });

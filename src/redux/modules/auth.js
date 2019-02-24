@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { FORM_ERROR } from 'final-form';
 import cookie from 'js-cookie';
 
@@ -113,26 +114,16 @@ const catchValidation = error => {
 };
 
 function setCookie({ app }) {
+  // eslint-disable-next-line no-unused-vars
   return async response => {
-    const payload = await app.passport.verifyJWT(response.accessToken);
-    const options = payload.exp ? { expires: new Date(payload.exp * 1000) } : undefined;
-
-    cookie.set('feathers-jwt', response.accessToken, options);
+    // TODO place cookie here
   };
 }
 
-function setToken({ client, app }) {
+function setToken({ client }) {
   return response => {
     const { accessToken } = response;
-
-    app.set('accessToken', accessToken);
     client.setJwtToken(accessToken);
-  };
-}
-
-function setUser({ app }) {
-  return response => {
-    app.set('user', response.user);
   };
 }
 
@@ -200,14 +191,10 @@ export function login(strategy, data) {
 export function logout() {
   return {
     types: [LOGOUT, LOGOUT_SUCCESS, LOGOUT_FAIL],
-    promise: async ({ client, app }) => {
-      await app.logout();
+    promise: async ({ client }) => {
       setToken({
-        client,
-        app
+        client
       })({ accessToken: null });
-      setUser({ app })({ user: null });
-      cookie.set('feathers-jwt', '');
     }
   };
 }

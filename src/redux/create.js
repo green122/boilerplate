@@ -47,7 +47,7 @@ export default function createStore({
     const DevTools = require('../containers/DevTools/DevTools');
 
     Array.prototype.push.apply(enhancers, [
-      window.devToolsExtension ? window.devToolsExtension() : DevTools.instrument(),
+      window.devToolsExtension ? window.devToolsExtension() : DevTools.default.instrument(),
       persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
     ]);
   }

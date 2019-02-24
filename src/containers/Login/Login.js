@@ -3,10 +3,16 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
+import styled from 'styled-components';
 import LoginForm from 'components/LoginForm/LoginForm';
 import FacebookLogin from 'components/FacebookLogin/FacebookLogin';
 import * as authActions from 'redux/modules/auth';
 import * as notifActions from 'redux/modules/notifs';
+
+const ButtonLogin = styled.button`
+  background: yellow;
+  border: 2px solid palegoldenrod;
+`;
 
 @connect(state => ({ user: state.auth.user }), { ...notifActions, ...authActions })
 @withRouter
@@ -69,6 +75,9 @@ export default class Login extends Component {
       <div className="container">
         <Helmet title="Login" />
         <h1>Login</h1>
+        <ButtonLogin onClick={logout}>
+          <i className="fa fa-sign-out" /> Log Out
+        </ButtonLogin>
         {!user && (
           <div>
             <LoginForm onSubmit={this.onLocalLogin} />
@@ -87,9 +96,9 @@ export default class Login extends Component {
             <p>You are currently logged in as {user.email}.</p>
 
             <div>
-              <button className="btn btn-danger" onClick={logout}>
+              <ButtonLogin onClick={logout}>
                 <i className="fa fa-sign-out" /> Log Out
-              </button>
+              </ButtonLogin>
             </div>
           </div>
         )}

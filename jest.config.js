@@ -3,6 +3,8 @@ module.exports = {
     process.env.NODE_PATH,
     'node_modules'
   ],
+  setupFiles: ['<rootDir>/setupTest.js'],
+  snapshotSerializers: ['enzyme-to-json/serializer'],
   moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|eot|otf|svg|ttf|woff|woff2)$': '<rootDir>/__mocks__/fileMock.js',
     '\\.(css|less|scss)$': 'identity-obj-proxy'

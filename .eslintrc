@@ -9,6 +9,7 @@
   "rules": {
     "arrow-parens": ["error", "as-needed"],
     "comma-dangle": ["error", "only-multiline"],
+    "linebreak-style": 0,
     "consistent-return": "off",
     "global-require": "off",
     "indent": ["error", 2, {"SwitchCase": 1}],

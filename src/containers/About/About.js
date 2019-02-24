@@ -24,7 +24,7 @@ export default class About extends Component {
         <Helmet title="About Us" />
 
         <p>
-          This project is maintained by Kévin Berthommier (
+          This project is maintained bysssss Kévin Berthommier (
           <a href="https://github.com/bertho-zero" target="_blank" rel="noopener noreferrer">
             @bertho-zero
           </a>) and was originally created by Erik Rasmussen (
